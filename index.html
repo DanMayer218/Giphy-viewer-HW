@@ -6,16 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- JQuery script link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <!-- Google font link -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One&display=swap" rel="stylesheet">
 
     <title>Giph to the world</title>
   </head>
-  <body>
-    <h1>Giph to the world</h1>
-    <button type="button" id="submit" class="btn btn-primary btn-lg">A Giph for you!!</button>
-    <container class="fluid" style="display: flex; justify-content: space-evenly; align-content: space-around;">
 
-    </container>
+    <!-- Body of the page -->
+    <body style="background-image: url(https://www.photohdx.com/images/2016/05/yellow-vintage-background-texture.jpg); margin-left: 20px; margin-right: 20px;">
+   
+         <!-- Header of the page -->
+         <h1 style="height: 120px; text-align: center;font-family: 'Press Start 2P', cursive; font-size: 40px; color: black; border: black solid 3px; 
+         padding-top: 25px; padding-bottom: 5px; background-color:lightslategray;background-blend-mode: screen; 
+         margin-top: 15px; box-shadow: 15px 15px 25px black; text-shadow: 5px 5px 6px black;">Giph to the world</h1>
+
+            <!-- Button to populate the gallery -->
+            <button name="comedian" type="button" id="submit" class="btn btn-primary btn-lg" style="display: block; width: 40%; margin-left:30%; 
+             margin-right: 30%; height: 80px; box-shadow: 25px 20px 30px #000000; border: black solid 5px; background-image: 
+             url(https://www.designyourway.net/blog/wp-content/uploads/2018/09/vintage-blue-soft-fabric-background-texture-1-700x467.jpg); 
+             font-family: 'Black Ops One', cursive; color: black; font-size: 25px;">GIPH ME A PRESS</button>
+
+                    <!-- Gallery to receive the giphs and populate -->
+                    <container class="fluid" id="giphGallery" style="display: flex; height: 700px; justify-content: space-evenly; 
+                    align-content: space-around;border: black solid 3px; padding-top: 20px; padding-bottom: 15px; background-blend-mode: multiply; background-color:lightslategray; 
+                    margin-top: 15px;">
+                    </container>
 
  
 
@@ -25,18 +48,81 @@
 
     <!-- My script goes here -->
     <script>
-                // my get function
-                function get(x) {
-                    document.getElementById("x");
+
+
+   
+        // create onclick for button to initiate function
+        $("button").on("click", function() {
+        
+            var name = $("this").attr("name");
+            var queryURL = "https://api.giphy.com/v1/gifs/search?" + name + "api_key=fd0KI4stOcjLEoVUBfTGMT8UUQbRZCYq&q=leslie neilson&limit=25&offset=0&rating=G&lang=en";
+
+           
+                $.ajax({
+                    url: queryURL,
+                    method: "GET"
+                })
+
+                .then(function(response){
+                    
+                    var results = response.data;
+                    console.log(queryURL);
                 }
+        
+            
+                )})
 
 
 
 
-        var submit = document.get(submit);
+
+
+
+
+
+
+        // var for the submission button
+        // var submit = get(submit);
+        // var for the giph gallery container
+        // var gallery = get("giphGallery");
+         // var for clearing buttons, containers and images.
+        // var repopulate = 
+
+            // assigning a variable to the url we want to make a xhttp request to 
+            // var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=E6URXR8C9Q1OUsxxb871fDf616BZ6X2n&tag=hilarious&rating=PG-13";
+
+
+                // Ajax get request to the server
+                // $.ajax({
+                // url: getQuery,
+                // method: "GET"
+                // })
+                    // The then function for the response from the server
+                    // .then(function(response) {
+                    // $("#giphGallery").text(JSON.stringify(response));
+                    // });
+
+                    // $(document).on("click", ".movie", displayMovieInfo);
+                    
+                        // The onclick event to trigger the giph population of the giphGallery
+                        // function populate() {
+
+                        // }
+
+
+
+
+
+
+
+      
+
+
+
+
     
     
-    
+                
     
     </script>
 
